@@ -11,11 +11,11 @@ import com.saman.hexad.model.ProductPack;
 public final class PackDto {
 
     private final int count;
-    private final ProductPack pack;
+    private final ProductPack productPack;
 
-    private PackDto(int count, ProductPack pack) {
+    private PackDto(int count, ProductPack productPack) {
         this.count = count;
-        this.pack = pack;
+        this.productPack = productPack;
     }
 
     /**
@@ -37,12 +37,12 @@ public final class PackDto {
     /**
      * @return
      */
-    public ProductPack getPack() {
-        return pack;
+    public ProductPack getProductPack() {
+        return productPack;
     }
 
     @Override
     public String toString() {
-        return count + " * " + pack.toString();
+        return count + " * " + productPack.toString();
     }
 }

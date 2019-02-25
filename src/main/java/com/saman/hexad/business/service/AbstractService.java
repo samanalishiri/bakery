@@ -12,37 +12,37 @@ import java.util.stream.Stream;
  * @author Saman Alishiri, samanalishiri@gmail.com
  * @since 2019-01-06
  */
-public abstract class AbstractService<ID extends Serializable, M extends AbstractModel<ID>, S extends CrudRepository<ID, M> & ReadOnlyRepository<ID, M>>
+public abstract class AbstractService<ID extends Serializable, M extends AbstractModel<ID>, R extends CrudRepository<ID, M> & ReadOnlyRepository<ID, M>>
         implements Service<ID, M> {
 
-    protected final S service;
+    protected final R repository;
 
-    protected AbstractService(S service) {
-        this.service = service;
+    protected AbstractService(R repository) {
+        this.repository = repository;
     }
 
     @Override
     public ID save(M m) {
-        return service.save(m);
+        return repository.save(m);
     }
 
     @Override
     public void edit(M m) {
-        service.edit(m);
+        repository.edit(m);
     }
 
     @Override
     public M find(ID id) {
-        return service.find(id);
+        return repository.find(id);
     }
 
     @Override
     public void delete(ID id) {
-        service.delete(id);
+        repository.delete(id);
     }
 
     @Override
     public Stream<Map.Entry<ID, M>> findAll() {
-        return service.findAll();
+        return repository.findAll();
     }
 }

@@ -18,15 +18,15 @@ public class PackHelper {
      * @return
      */
     public static BigDecimal calculateTotalPrice(List<PackDto> models) {
-        BigDecimal temp = BigDecimal.valueOf(0);
+        BigDecimal total = BigDecimal.valueOf(0);
         List<BigDecimal> collect = models.stream()
-                .map(packDto -> packDto.getPack().getPrice().multiply(BigDecimal.valueOf(packDto.getCount())))
+                .map(packDto -> packDto.getProductPack().getPrice().multiply(BigDecimal.valueOf(packDto.getCount())))
                 .collect(Collectors.toList());
 
         for (BigDecimal n : collect) {
-            temp = temp.add(n);
+            total = total.add(n);
         }
-        return temp;
+        return total;
     }
 
     /**
